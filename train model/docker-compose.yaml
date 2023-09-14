@@ -1,0 +1,6 @@
+version: "3"
+services:
+  train:
+    image: train_model:latest
+    ports:
+      - "5434:5432"
