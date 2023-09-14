@@ -49,7 +49,7 @@ Dbeaver:
 
 ## Airflow (ETL + Predict) <a name = "airflow"></a>
 For start process locally, follow the steps below:
-1) Download folder <FOLDERNAME> locally.
+1) Download folder **Airflow** locally.
    
 2) Make sure that docker is running and docker-engine  has sufficient memory allocated.
 
@@ -92,12 +92,12 @@ The data is downloaded from the website https://rp5.ru/Weather_archive_in_Moscow
 
 **ETL** and **Predict** are loaded as DAGs in Apache Airflow.  
 
-**Train model** is located in a separate Docker container.  
+**Train model** is located in a separate folder.  
 
 # ETL <a name = "etl-1"></a>
 ## ETL process diagram  <a name = "etl_process_diagram"></a>
 
-![ETL drawio](https://github.com/minin2000/Weather-project/assets/65463411/f1754c2c-2296-48b3-9cdd-622a2cb134f4)
+![ETL drawio](https://github.com/minin2000/temperature-prediction/assets/65463411/0b7a63c5-a3b0-4e2e-bfcc-4921499ecf24)
 
 ## Description of steps <a name = "etldescription_of_steps"></a>
 **- Init browser** – set options for the driver, indicate the saving path for the downloaded files. Open the browser, return driver.  
@@ -184,7 +184,7 @@ When you are finished working and want to clean up your environment, run:
 
 ## Train model (optional)  <a name = "train_model_optional"></a>
 If you want to train model, follow next steps:  
-1) Download folder <FOLDERNAME> locally  
+1) Download folder **train model** locally  
    
 3) In folder create virtual environment:  
    
