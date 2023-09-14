@@ -226,7 +226,7 @@ Chosen model: XGBRegressor
 
 ## Example of predictions <a name = "example_of_predictions"></a>
 
-On a screeshot bellow represents table, where:  
+On a screeshot below represents table, where:  
 datetime - date and time from which the prediction was made  
 temp_X - real temperature after X hours after datetime  
 pred_temp_X - predicted temperature afrer X hours after datetime  
