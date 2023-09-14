@@ -227,11 +227,11 @@ Chosen model: XGBRegressor
 ## Example of predictions <a name = "example_of_predictions"></a>
 
 On a screeshot below represents table, where:  
-datetime - date and time from which the prediction was made  
+datetime - date and time from which the predictions was made  
 temp_X - real temperature after X hours after datetime  
 pred_temp_X - predicted temperature afrer X hours after datetime  
-MAE_X - error for prediction  
-MAE - mean error for all predictions from datetime (8 predictions for each 3 hours)  
+MAE_X - error of prediction  
+MAE - mean error of all predictions from datetime (8 predictions for each 3 hours)  
 
 ![example_table](https://github.com/minin2000/Weather-project/assets/65463411/e1d5c7d3-f9ec-4c02-8a10-2fee2380d8f2)
 
