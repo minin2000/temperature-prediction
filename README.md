@@ -36,16 +36,18 @@ Before start process locally, required to create database connection, use next s
 **- Password** - qwerty  
 
 pgAdmin4:
-![pgadmin_1](https://github.com/minin2000/Weather-project/assets/65463411/3ed17e7f-28ea-4471-bb70-48a29322c42c)
-![pgadmin_2](https://github.com/minin2000/Weather-project/assets/65463411/86e9cc15-9201-4d3e-9af2-60bfe9e604da)
+
+![pgadmin_1](https://github.com/minin2000/temperature-prediction/assets/65463411/41ac1b25-0e2d-4fae-a3f9-fc0bed9d5f88)
+![pgadmin_2](https://github.com/minin2000/temperature-prediction/assets/65463411/a4341cba-6ae8-496e-a7ab-0cb715cc7261)
+
 
 Make sure that you have user - username with Superuser  
 
-![pgadmin_3](https://github.com/minin2000/Weather-project/assets/65463411/64160ea4-f3e7-450e-98da-cea906ab39c1)
+![pgadmin_3](https://github.com/minin2000/temperature-prediction/assets/65463411/879ee0af-b4bd-47eb-92d9-c0a661810ec8)
 
 Dbeaver:   
 
-![postgresConnectionExample](https://github.com/minin2000/Weather-project/assets/65463411/5f9586ea-fcc7-4597-a53f-6c7e641cfe5d)
+![postgresConnectionExample](https://github.com/minin2000/temperature-prediction/assets/65463411/29b1562f-1c7c-4b19-ae0e-13c28cdafb3b)
 
 ## Airflow (ETL + Predict) <a name = "airflow"></a>
 For start process locally, follow the steps below:
@@ -75,7 +77,7 @@ docker compose up --build -d
 
 # Project diagram <a name = "project_diagram"></a>
 
-![Project diagram](https://github.com/minin2000/Weather-project/assets/65463411/0bfb5b37-fd95-44af-af21-886c521245f2)
+![Project diagram](https://github.com/minin2000/temperature-prediction/assets/65463411/7cfba0aa-edce-4dbe-aa84-bcdafab46b1d)
 
 ## Project Description <a name = "project_description"></a>
 
@@ -97,7 +99,7 @@ The data is downloaded from the website https://rp5.ru/Weather_archive_in_Moscow
 # ETL <a name = "etl-1"></a>
 ## ETL process diagram  <a name = "etl_process_diagram"></a>
 
-![ETL drawio](https://github.com/minin2000/temperature-prediction/assets/65463411/0b7a63c5-a3b0-4e2e-bfcc-4921499ecf24)
+![ETL drawio](https://github.com/minin2000/temperature-prediction/assets/65463411/5fc9b4fe-96b4-45d3-8cfb-03d02e45b521)
 
 ## Description of steps <a name = "etldescription_of_steps"></a>
 **- Init browser** – set options for the driver, indicate the saving path for the downloaded files. Open the browser, return driver.  
@@ -117,8 +119,7 @@ If there is no 'weather' table in the Database (first run or table deleted) then
 # Train model <a name = "train_model"></a>
 ## Train model process diagram <a name = "train_model_diagram"></a>
 
-![Train model drawio](https://github.com/minin2000/Weather-project/assets/65463411/1aba208c-40e6-42b4-8720-54a542e7fc09)
-
+![Train model drawio](https://github.com/minin2000/temperature-prediction/assets/65463411/a4f1891f-233b-4fd3-8448-5f8041f26b7e)
 
 ## Description of steps <a name = "train_model_description"></a>
 **- Start** – run docker container or run locally in IDE.  
@@ -134,7 +135,7 @@ If there is no 'weather' table in the Database (first run or table deleted) then
 # Predict <a name = "predict"></a>
 ## Predict process diagram <a name = "predict_diagram"></a>
 
-![Predict drawio](https://github.com/minin2000/Weather-project/assets/65463411/4e4f99c8-cd0b-41e2-ba74-2497895c14df)
+![Predict drawio](https://github.com/minin2000/temperature-prediction/assets/65463411/7ac847d1-a7fe-45c2-9f5b-de641c52c4f6)
 
 ## Description of steps <a name = "predict_description"></a>
 
@@ -163,16 +164,15 @@ After step 'Installation' is completed, follow for the next steps:
 
 2) Login as Username - `airflow`, password - `airflow`
 
-![airflow](https://github.com/minin2000/Weather-project/assets/65463411/c623f969-d8a0-42e5-bce3-d4ce5ee72671)
+![airflow](https://github.com/minin2000/temperature-prediction/assets/65463411/8237cf06-ddb9-4488-8918-c0d2208d3f82)
 
 4) Turn DAG `Weather_ETL`, wait until it finishes. It will create table `weather` in PostgreSQL with historical weather data.
-   
-![dag weather etl](https://github.com/minin2000/temperature-prediction/assets/65463411/d0c7236b-1df2-4634-9b91-90fc60946bd4)
+
+![dag weather etl](https://github.com/minin2000/temperature-prediction/assets/65463411/fc8a0173-4f8a-4c5b-ba6f-df2318c7db04)
 
 4) Turn DAG `Weather_prediction`, it will be triggered by `Weather_ETL`. DAG will create table `weather_predictions` where will be predictions for the next 24 hours.
 
-![dag weather prediction](https://github.com/minin2000/Weather-project/assets/65463411/f4fa0631-d63b-4a85-9ae7-7d7ac00dcdf7)
-
+![dag weather prediction](https://github.com/minin2000/temperature-prediction/assets/65463411/dd054b2b-64f9-49a4-b6eb-11c17738c06a)
 
 DAG `Weather_ETL` will be triggered every 3 hours and will check if new historical data appeared. If new data appears, `Weather_ETL` will trigger `Weather_prediction` for making new predictions.  
 
@@ -210,15 +210,15 @@ If you want to train model, follow next steps:
 
 After main.py finishes run, you will find results in MLFlow. Model will be in your-project-folder/output  
 
-![mflow](https://github.com/minin2000/Weather-project/assets/65463411/8e55661a-c46d-482d-8d0b-f921e1e82a3c)
-
+![mflow](https://github.com/minin2000/temperature-prediction/assets/65463411/b09fb9e8-21c1-403c-9516-e043d44ee163)
 
 Feel free to create new features in `preprocess_data/feature_engineering`, tune your model, change data to use (`CONFIG['date_from']` `CONFIG['date_to']`)  
 
 
 # Result <a name = "result"></a>
 The following columns were selected as the best columns for weather forecasting, their weights are presented below.
-![feature_importance_weight](https://github.com/minin2000/Weather-project/assets/65463411/59a39be0-de0e-4748-8f16-8d4e81bae4e1)
+
+![feature_importance_weight](https://github.com/minin2000/temperature-prediction/assets/65463411/9add8f77-d68c-4dcd-ab67-507ae641c268)
 
 
 Chosen model: XGBRegressor  
@@ -233,7 +233,7 @@ pred_temp_X - predicted temperature afrer X hours after datetime
 MAE_X - error of prediction  
 MAE - mean error of all predictions from datetime (8 predictions for each 3 hours)  
 
-![example_table](https://github.com/minin2000/Weather-project/assets/65463411/e1d5c7d3-f9ec-4c02-8a10-2fee2380d8f2)
+![example_table](https://github.com/minin2000/temperature-prediction/assets/65463411/c4408407-3470-497c-aa25-96f53fe6d2a9)
 
 
 
