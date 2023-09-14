@@ -167,8 +167,7 @@ After step 'Installation' is completed, follow for the next steps:
 
 4) Turn DAG `Weather_ETL`, wait until it finishes. It will create table `weather` in PostgreSQL with historical weather data.
    
-![dag weather etl](https://github.com/minin2000/Weather-project/assets/65463411/83667c26-53fd-46c2-ba0e-2625acad10b3)
-
+![dag weather etl](https://github.com/minin2000/temperature-prediction/assets/65463411/d0c7236b-1df2-4634-9b91-90fc60946bd4)
 
 4) Turn DAG `Weather_prediction`, it will be triggered by `Weather_ETL`. DAG will create table `weather_predictions` where will be predictions for the next 24 hours.
 
