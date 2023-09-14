@@ -75,7 +75,7 @@ docker compose up --build -d
 
 # Project diagram <a name = "project_diagram"></a>
 
-![Project diagram](https://github.com/minin2000/Weather-project/assets/65463411/99e5ea45-038f-4919-8a23-79f7c468946c)
+![Project diagram](https://github.com/minin2000/Weather-project/assets/65463411/0bfb5b37-fd95-44af-af21-886c521245f2)
 
 ## Project Description <a name = "project_description"></a>
 
