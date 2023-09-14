@@ -36,13 +36,16 @@ Before start process locally, required to create database connection, use next s
 **- Password** - qwerty  
 
 pgAdmin4:
-![pgadmin_1](https://github.com/minin2000/Weather-prediction/assets/65463411/2bf311cd-15c7-4757-bfec-9c9dea6905ba)
-![pgadmin_2](https://github.com/minin2000/Weather-prediction/assets/65463411/dd9fa107-6a32-48b9-b40f-1f82f3d5fb83)
+![pgadmin_1](https://github.com/minin2000/Weather-project/assets/65463411/3ed17e7f-28ea-4471-bb70-48a29322c42c)
+![pgadmin_2](https://github.com/minin2000/Weather-project/assets/65463411/86e9cc15-9201-4d3e-9af2-60bfe9e604da)
+
 Make sure that you have user - username with Superuser  
-![pgadmin_3](https://github.com/minin2000/Weather-prediction/assets/65463411/4649836a-ae92-45fc-a09e-40ab2c360ba2)
+
+![pgadmin_3](https://github.com/minin2000/Weather-project/assets/65463411/64160ea4-f3e7-450e-98da-cea906ab39c1)
 
 Dbeaver:   
-![postgresConnectionExample](https://github.com/minin2000/Weather-prediction/assets/65463411/a3abddaf-c428-40f4-b217-6fd6e1c5c992)
+
+![postgresConnectionExample](https://github.com/minin2000/Weather-project/assets/65463411/5f9586ea-fcc7-4597-a53f-6c7e641cfe5d)
 
 ## Airflow (ETL + Predict) <a name = "airflow"></a>
 For start process locally, follow the steps below:
@@ -71,7 +74,9 @@ docker compose up --build -d
 
 
 # Project diagram <a name = "project_diagram"></a>
-![Project diagram](https://github.com/minin2000/Weather-prediction/assets/65463411/1621e1ff-f0b3-4772-9b3d-95f714bb05ef)
+
+![Project diagram](https://github.com/minin2000/Weather-project/assets/65463411/99e5ea45-038f-4919-8a23-79f7c468946c)
+
 ## Project Description <a name = "project_description"></a>
 
 The project consists of the following parts:  
@@ -91,7 +96,9 @@ The data is downloaded from the website https://rp5.ru/Weather_archive_in_Moscow
 
 # ETL <a name = "etl-1"></a>
 ## ETL process diagram  <a name = "etl_process_diagram"></a>
-![ETL drawio](https://github.com/minin2000/Weather-prediction/assets/65463411/86af5d5b-864c-4f4b-b6c8-0a975ad0f1b9)
+
+![ETL drawio](https://github.com/minin2000/Weather-project/assets/65463411/f1754c2c-2296-48b3-9cdd-622a2cb134f4)
+
 ## Description of steps <a name = "etldescription_of_steps"></a>
 **- Init browser** – set options for the driver, indicate the saving path for the downloaded files. Open the browser, return driver.  
 
@@ -109,7 +116,10 @@ If there is no 'weather' table in the Database (first run or table deleted) then
 
 # Train model <a name = "train_model"></a>
 ## Train model process diagram <a name = "train_model_diagram"></a>
-![Train model drawio](https://github.com/minin2000/Weather-prediction/assets/65463411/14ed902e-4df0-4424-8445-d4a7ff4600c1)
+
+![Train model drawio](https://github.com/minin2000/Weather-project/assets/65463411/1aba208c-40e6-42b4-8720-54a542e7fc09)
+
+
 ## Description of steps <a name = "train_model_description"></a>
 **- Start** – run docker container or run locally in IDE.  
 
@@ -123,7 +133,9 @@ If there is no 'weather' table in the Database (first run or table deleted) then
 
 # Predict <a name = "predict"></a>
 ## Predict process diagram <a name = "predict_diagram"></a>
-![Predict drawio](https://github.com/minin2000/Weather-prediction/assets/65463411/3153ac10-276b-4eb6-a1c9-69a7e45ee01e)
+
+![Predict drawio](https://github.com/minin2000/Weather-project/assets/65463411/4e4f99c8-cd0b-41e2-ba74-2497895c14df)
+
 ## Description of steps <a name = "predict_description"></a>
 
 **- Start** – event based. It is launched after the DAG ETL has completed and a new row with data has been added to the ‘weather’ datatable.
@@ -150,16 +162,18 @@ After step 'Installation' is completed, follow for the next steps:
 1) Access the Airflow web interface in your browser at http://localhost:8080.  
 
 2) Login as Username - `airflow`, password - `airflow`
+
+![airflow](https://github.com/minin2000/Weather-project/assets/65463411/c623f969-d8a0-42e5-bce3-d4ce5ee72671)
+
+4) Turn DAG `Weather_ETL`, wait until it finishes. It will create table `weather` in PostgreSQL with historical weather data.
    
-![Screenshot from 2023-09-14 17-53-52](https://github.com/minin2000/Weather-prediction/assets/65463411/cd0b2862-0dea-4c41-8b66-8ddcbb4c2e67)
+![dag weather etl](https://github.com/minin2000/Weather-project/assets/65463411/83667c26-53fd-46c2-ba0e-2625acad10b3)
 
-3) Turn DAG `Weather_ETL`, wait until it finishes. It will create table `weather` in PostgreSQL with historical weather data.
-
-![Screenshot from 2023-09-14 17-56-07](https://github.com/minin2000/Weather-prediction/assets/65463411/c265099a-ddd9-4f68-adc7-7f41bae83a5a)
 
 4) Turn DAG `Weather_prediction`, it will be triggered by `Weather_ETL`. DAG will create table `weather_predictions` where will be predictions for the next 24 hours.
 
-![Screenshot from 2023-09-14 17-58-21](https://github.com/minin2000/Weather-prediction/assets/65463411/5e7e92ef-bb28-4f77-8002-0d13a3534724)
+![dag weather prediction](https://github.com/minin2000/Weather-project/assets/65463411/f4fa0631-d63b-4a85-9ae7-7d7ac00dcdf7)
+
 
 DAG `Weather_ETL` will be triggered every 3 hours and will check if new historical data appeared. If new data appears, `Weather_ETL` will trigger `Weather_prediction` for making new predictions.  
 
@@ -197,15 +211,16 @@ If you want to train model, follow next steps:
 
 After main.py finishes run, you will find results in MLFlow. Model will be in your-project-folder/output  
 
-![Screenshot from 2023-09-14 18-13-01](https://github.com/minin2000/Weather-prediction/assets/65463411/77db618e-2d70-476c-ae37-a40a1d3463b7)
+![mflow](https://github.com/minin2000/Weather-project/assets/65463411/8e55661a-c46d-482d-8d0b-f921e1e82a3c)
+
 
 Feel free to create new features in `preprocess_data/feature_engineering`, tune your model, change data to use (`CONFIG['date_from']` `CONFIG['date_to']`)  
 
 
 # Result <a name = "result"></a>
 The following columns were selected as the best columns for weather forecasting, their weights are presented below.
+![feature_importance_weight](https://github.com/minin2000/Weather-project/assets/65463411/59a39be0-de0e-4748-8f16-8d4e81bae4e1)
 
-![feature_importance_weight](https://github.com/minin2000/Weather-prediction/assets/65463411/5b5b3461-9ac0-43b4-90cd-61ef99092d45)
 
 Chosen model: XGBRegressor  
 **MAE**: 1.008 (for 8200 test set datetime)  
@@ -218,5 +233,8 @@ temp_X - real temperature after X hours after datetime
 pred_temp_X - predicted temperature afrer X hours after datetime  
 MAE_X - error for prediction  
 MAE - mean error for all predictions from datetime (8 predictions for each 3 hours)  
-![Screenshot from 2023-09-14 19-45-23](https://github.com/minin2000/Weather-prediction/assets/65463411/af7d27bd-27c0-4a51-b8ec-8108c30a8524)
+
+![example_table](https://github.com/minin2000/Weather-project/assets/65463411/e1d5c7d3-f9ec-4c02-8a10-2fee2380d8f2)
+
+
 
